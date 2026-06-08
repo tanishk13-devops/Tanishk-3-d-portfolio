@@ -487,18 +487,18 @@ export default function Overlay({ scrollY, scrollProgress }) {
             </p>
             
             <div className="space-y-6">
-              <a href="mailto:tanishk13.devops@gmail.com" className="group flex items-center gap-4 text-gray-300 hover:text-white transition-colors duration-300">
+              <a href="mailto:nickyjaiswal85@gmail.com" className="group flex items-center gap-4 text-gray-300 hover:text-white transition-colors duration-300">
                 <div className="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all">
                   <Mail className="w-5 h-5 text-gray-300" />
                 </div>
-                <span className="text-lg">tanishk13.devops@gmail.com</span>
+                <span className="text-lg">nickyjaiswal85@gmail.com</span>
               </a>
               
               <div className="flex items-center gap-4 text-gray-300">
                 <div className="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center">
                   <Phone className="w-5 h-5 text-gray-300" />
                 </div>
-                <span className="text-lg">+91 93363 15832</span>
+                <span className="text-lg">+91 93365 19832</span>
               </div>
 
               <div className="flex items-center gap-4 text-gray-300">
