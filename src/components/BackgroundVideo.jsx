@@ -2,58 +2,50 @@ import React, { useRef, useEffect } from 'react'
 
 export default function BackgroundVideo({ scrollProgress }) {
   const videoRef = useRef(null)
-  const targetTimeRef = useRef(0)
+  const targetProgressRef = useRef(0)
+  const currentProgressRef = useRef(0)
   const requestRef = useRef(null)
+  const lastSeekTimeRef = useRef(0)
 
-  // Update target time when scrollProgress changes
+  // Update target progress when scrollProgress changes
   useEffect(() => {
-    const video = videoRef.current
-    if (!video || isNaN(video.duration) || video.duration === 0) return
-
-    const heroEnd = 0.38
-    const progressInHero = Math.max(0, Math.min(scrollProgress / heroEnd, 1.0))
-    targetTimeRef.current = progressInHero * video.duration
+    targetProgressRef.current = scrollProgress
   }, [scrollProgress])
 
-  // Continuous animation loop using requestAnimationFrame with a self-throttling seek-lock
+  // Continuous animation loop using requestAnimationFrame with a LERP-smoothed, throttled seeking engine
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
 
     video.pause()
-    let isSeeking = false
 
     const updateFrame = () => {
-      // Only request a new frame if the decoder is not currently busy seeking
-      if (!isNaN(video.duration) && video.duration > 0 && !isSeeking) {
-        const targetTime = targetTimeRef.current
-        const currentTime = video.currentTime
-        const diff = targetTime - currentTime
+      if (!isNaN(video.duration) && video.duration > 0) {
+        // LERP: Smooth out discrete scroll notches into a continuous fluid glide
+        // 0.07 is the easing inertia factor (lower = smoother/slower, higher = snappier)
+        currentProgressRef.current += (targetProgressRef.current - currentProgressRef.current) * 0.07
+
+        const heroEnd = 0.38
+        const progressInHero = Math.max(0, Math.min(currentProgressRef.current / heroEnd, 1.0))
+        const targetTime = progressInHero * video.duration
         
-        // Easing factor (0.15 for responsive, smooth glide)
-        if (Math.abs(diff) > 0.01) {
-          isSeeking = true
-          video.currentTime = currentTime + diff * 0.15
-        } else if (currentTime !== targetTime) {
-          isSeeking = true
+        const now = performance.now()
+        // Seek if the difference is meaningful, the video is not currently busy seeking, 
+        // and we haven't sought in the last 25ms (40fps max update rate to protect GPU decoder)
+        if (Math.abs(video.currentTime - targetTime) > 0.02 && !video.seeking && (now - lastSeekTimeRef.current > 25)) {
           video.currentTime = targetTime
+          lastSeekTimeRef.current = now
         }
       }
       requestRef.current = requestAnimationFrame(updateFrame)
     }
 
-    const handleSeeked = () => {
-      isSeeking = false // Unlock when the browser has finished rendering the current frame
-    }
-
-    video.addEventListener('seeked', handleSeeked)
     requestRef.current = requestAnimationFrame(updateFrame)
 
     return () => {
       if (requestRef.current) {
         cancelAnimationFrame(requestRef.current)
       }
-      video.removeEventListener('seeked', handleSeeked)
     }
   }, [])
 
