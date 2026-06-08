@@ -1,16 +1,49 @@
-# React + Vite
+# Tanishk Jaiswal | 3D Storytelling Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, interactive developer portfolio featuring scroll-driven background video scrubbing, glassmorphic UI overlay, technical skills visualization, and responsive fluid scrollytelling.
 
-Currently, two official plugins are available:
+🔗 **Live Link:** [tanishk-3d-portfolio.vercel.app](https://tanishk-3d-portfolio.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+*   **Scroll-Scrubbing Background Video:** playback time is synchronized frame-by-frame with scroll progress for stop-motion interactive scrollytelling.
+*   **Aesthetic Overlay:** Premium typography layout with high-contrast, readable text layers built with Tailwind CSS.
+*   **Technical Arsenal Grid:** Modular skills classification (Languages, Web Frameworks, Tools, AI & Data Visualization).
+*   **Selected Work:** Curated list of live projects with a sleek overlay description hover effect.
+*   **Interactive Contact Form:** Responsive Glassmorphic contact form for direct inquiries.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+*   **Frontend:** React 18, Vite
+*   **Styling:** Tailwind CSS v4, Vanilla CSS
+*   **Icons:** Lucide React
+*   **Deployment:** Vercel
+
+---
+
+## 📦 Getting Started
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/tanishk13-devops/Tanishk-3-d-portfolio.git
+   cd Tanishk-3-d-portfolio
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the local development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
