@@ -21,7 +21,7 @@ const AboutMedia = () => {
   if (hasPhoto) {
     return (
       <img
-        src="/about-media.jpg"
+        src="/professional.jpeg"
         alt="Tanishk Jaiswal"
         onError={() => setHasPhoto(false)}
         className="w-full h-full object-cover object-top rounded-[2rem] relative z-20"
@@ -36,7 +36,23 @@ const AboutMedia = () => {
   )
 }
 
-export default function Overlay({ scrollY, scrollProgress }) {
+export default function Overlay({ scrollProgress }) {
+  const [formName, setFormName] = React.useState('')
+  const [formEmail, setFormEmail] = React.useState('')
+  const [formMessage, setFormMessage] = React.useState('')
+  const [formStatus, setFormStatus] = React.useState('idle') // 'idle' | 'sending' | 'success'
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault()
+    setFormStatus('sending')
+    setTimeout(() => {
+      setFormStatus('success')
+      // Open default mail client pre-filled
+      const mailtoUrl = `mailto:nickyjaiswal85@gmail.com?subject=Portfolio Message from ${encodeURIComponent(formName)}&body=${encodeURIComponent(formMessage)}%0A%0A---%0AReply Email: ${encodeURIComponent(formEmail)}`
+      window.location.href = mailtoUrl
+    }, 1200)
+  }
+
   // Helper to calculate opacity based on scrollProgress ranges
   const getSlideStyle = (start, end, fadeInTime = 0.05, fadeOutTime = 0.05) => {
     let opacity = 0
@@ -243,6 +259,15 @@ export default function Overlay({ scrollY, scrollProgress }) {
                   {/* Glowing background gradient placeholder */}
                   <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/50 via-zinc-900/90 to-black/95 z-0" />
                   
+                  {/* Custom Clean Logo */}
+                  <div className="absolute inset-0 flex items-start justify-center pt-16 z-5">
+                    <img 
+                      src="/projects/ziggy_logo.png" 
+                      alt="Ziggy Delivering Happiness Logo" 
+                      className="w-32 h-32 object-contain opacity-75 group-hover:opacity-30 group-hover:scale-105 transition-all duration-700 ease-out filter drop-shadow-[0_0_20px_rgba(99,102,241,0.25)]"
+                    />
+                  </div>
+
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#121212]/90 z-10"></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"></div>
@@ -276,6 +301,15 @@ export default function Overlay({ scrollY, scrollProgress }) {
                 <div className="relative h-[450px] w-full overflow-hidden rounded-3xl border border-white/5 bg-[#1a1a1a] shadow-2xl transition-all duration-700 ease-out group-hover:border-white/20 group-hover:shadow-[0_0_80px_rgba(255,255,255,0.07)]">
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-900/50 via-zinc-900/90 to-black/95 z-0" />
                   
+                  {/* Custom Clean Logo */}
+                  <div className="absolute inset-0 flex items-start justify-center pt-16 z-5">
+                    <img 
+                      src="/projects/resume_analyzer_logo.png" 
+                      alt="AI Resume Analyzer Logo" 
+                      className="w-32 h-32 object-contain opacity-75 group-hover:opacity-30 group-hover:scale-105 transition-all duration-700 ease-out filter drop-shadow-[0_0_20px_rgba(168,85,247,0.25)]"
+                    />
+                  </div>
+
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#121212]/90 z-10"></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"></div>
                   
@@ -307,6 +341,15 @@ export default function Overlay({ scrollY, scrollProgress }) {
                 <div className="relative h-[450px] w-full overflow-hidden rounded-3xl border border-white/5 bg-[#1a1a1a] shadow-2xl transition-all duration-700 ease-out group-hover:border-white/20 group-hover:shadow-[0_0_80px_rgba(255,255,255,0.07)]">
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/50 via-zinc-900/90 to-black/95 z-0" />
                   
+                  {/* Custom Clean Logo */}
+                  <div className="absolute inset-0 flex items-start justify-center pt-16 z-5">
+                    <img 
+                      src="/projects/github_visualizer_logo.png" 
+                      alt="GitHub Profile Visualizer Logo" 
+                      className="w-32 h-32 object-contain opacity-75 group-hover:opacity-30 group-hover:scale-105 transition-all duration-700 ease-out filter drop-shadow-[0_0_20px_rgba(6,182,212,0.25)]"
+                    />
+                  </div>
+
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#121212]/90 z-10"></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"></div>
                   
@@ -338,6 +381,15 @@ export default function Overlay({ scrollY, scrollProgress }) {
                 <div className="relative h-[450px] w-full overflow-hidden rounded-3xl border border-white/5 bg-[#1a1a1a] shadow-2xl transition-all duration-700 ease-out group-hover:border-white/20 group-hover:shadow-[0_0_80px_rgba(255,255,255,0.07)]">
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-900/50 via-zinc-900/90 to-black/95 z-0" />
                   
+                  {/* Custom Clean Logo */}
+                  <div className="absolute inset-0 flex items-start justify-center pt-16 z-5">
+                    <img 
+                      src="/projects/retail_analytics_logo.png" 
+                      alt="Retail Analytic App Logo" 
+                      className="w-32 h-32 object-contain opacity-75 group-hover:opacity-30 group-hover:scale-105 transition-all duration-700 ease-out filter drop-shadow-[0_0_20px_rgba(59,130,246,0.25)]"
+                    />
+                  </div>
+
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-[#121212]/90 z-10"></div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out"></div>
                   
@@ -519,29 +571,85 @@ export default function Overlay({ scrollY, scrollProgress }) {
             </div>
           </div>
 
-          <div className="md:w-6/12 bg-[#121212] border border-white/5 rounded-3xl p-8 shadow-2xl">
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm text-gray-400 ml-1">Name</label>
-                  <input type="text" placeholder="John Doe" className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/30 transition-all" required />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm text-gray-400 ml-1">Email</label>
-                  <input type="email" placeholder="john@example.com" className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/30 transition-all" required />
-                </div>
+          {formStatus === 'success' ? (
+            <div className="md:w-6/12 bg-[#121212] border border-white/5 rounded-3xl p-8 shadow-2xl flex flex-col items-center justify-center text-center min-h-[400px]">
+              <div className="w-16 h-16 bg-green-500/10 border border-green-500/20 rounded-full flex items-center justify-center mb-6 animate-bounce">
+                <svg viewBox="0 0 24 24" className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
               </div>
-              
-              <div className="space-y-2">
-                <label className="text-sm text-gray-400 ml-1">Message</label>
-                <textarea placeholder="Tell me about your project..." rows={5} className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/30 transition-all resize-none" required></textarea>
-              </div>
-              
-              <button type="submit" className="w-full bg-white text-black font-semibold py-4 rounded-xl hover:bg-gray-200 transition-all duration-300 flex items-center justify-center gap-2">
-                <MessageSquare className="w-5 h-5" /> Send Message
+              <h3 className="text-2xl font-bold text-white mb-3">Message Ready!</h3>
+              <p className="text-gray-400 font-light max-w-sm mb-6 leading-relaxed">
+                Thank you, <span className="text-white font-medium">{formName}</span>! Opening your email client to send your message. You can also reply directly from <span className="text-white font-medium">{formEmail}</span>.
+              </p>
+              <button
+                onClick={() => {
+                  setFormStatus('idle')
+                  setFormName('')
+                  setFormEmail('')
+                  setFormMessage('')
+                }}
+                className="px-6 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white hover:bg-white/10 transition-all duration-300 text-sm font-medium"
+              >
+                Send Another Message
               </button>
-            </form>
-          </div>
+            </div>
+          ) : (
+            <div className="md:w-6/12 bg-[#121212] border border-white/5 rounded-3xl p-8 shadow-2xl">
+              <form className="space-y-6" onSubmit={handleFormSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm text-gray-400 ml-1">Name</label>
+                    <input 
+                      type="text" 
+                      placeholder="John Doe" 
+                      value={formName} 
+                      onChange={(e) => setFormName(e.target.value)} 
+                      className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/30 transition-all" 
+                      required 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm text-gray-400 ml-1">Email</label>
+                    <input 
+                      type="email" 
+                      placeholder="john@example.com" 
+                      value={formEmail} 
+                      onChange={(e) => setFormEmail(e.target.value)} 
+                      className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/30 transition-all" 
+                      required 
+                    />
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <label className="text-sm text-gray-400 ml-1">Message</label>
+                  <textarea 
+                    placeholder="Tell me about your project..." 
+                    value={formMessage} 
+                    onChange={(e) => setFormMessage(e.target.value)} 
+                    rows={5} 
+                    className="w-full bg-[#1a1a1a] border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/30 transition-all resize-none" 
+                    required 
+                  />
+                </div>
+                
+                <button 
+                  type="submit" 
+                  disabled={formStatus === 'sending'} 
+                  className="w-full bg-white text-black font-semibold py-4 rounded-xl hover:bg-gray-200 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50"
+                >
+                  {formStatus === 'sending' ? (
+                    '🧠 Generating mail...'
+                  ) : (
+                    <>
+                      <MessageSquare className="w-5 h-5" /> Send Message
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
+          )}
         </div>
         
         <div className="absolute bottom-5 left-0 w-full text-center text-gray-500 text-sm border-t border-white/5 pt-5 mt-16 max-w-7xl mx-auto">
