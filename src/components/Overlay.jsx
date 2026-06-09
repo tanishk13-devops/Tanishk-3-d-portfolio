@@ -562,7 +562,7 @@ export default function Overlay({ scrollProgress }) {
             </div>
 
             <div className="flex gap-4 pt-4 mt-8 border-t border-white/10">
-              <a href="https://linkedin.com/in/tanishk-jaiswal" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#0077b5] transition-colors p-2">
+              <a href="https://www.linkedin.com/in/tanishk-jaiswal-05a24724a/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#0077b5] transition-colors p-2">
                 <LinkedinIcon className="w-7 h-7" />
               </a>
               <a href="https://github.com/tanishk13-devops" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors p-2">
